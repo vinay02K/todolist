@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #faf8f3;
+  --paper-line: rgba(35, 35, 35, 0.1);
+  --ink: #232323;
+  --ink-dim: rgba(35, 35, 35, 0.5);
+  --ink-faint: rgba(35, 35, 35, 0.32);
+  --accent: #3c6e52;
+  --ochre: #c58b2e;
+  --brick: #b23a48;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  min-height: 100vh;
+  background: var(--paper);
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--ink);
+}
+
+.ledger {
+  width: 100%;
+  max-width: 460px;
+}
+
+.ledger-header {
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.ledger-title {
+  font-family: "Newsreader", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 30px;
+  margin: 0 0 6px;
+}
+
+.ledger-date {
+  font-size: 12.5px;
+  color: var(--ink-dim);
+  margin: 0;
+}
+
+/* form */
+
+.todo-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.todo-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--ink);
+  padding: 6px 2px;
+  outline: none;
+}
+
+.todo-input::placeholder {
+  color: var(--ink-faint);
+}
+
+.priority-picker {
+  display: flex;
+  gap: 4px;
+}
+
+.priority-dot {
+  width: 28px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--paper-line);
+  background: transparent;
+  font-size: 10.5px;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--dot-color);
+  cursor: pointer;
+  opacity: 0.45;
+}
+
+.priority-dot-active {
+  opacity: 1;
+  border-color: var(--dot-color);
+  background: color-mix(in srgb, var(--dot-color) 12%, transparent);
+}
+
+.add-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.add-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* filter bar */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 16px;
+}
+
+.filter-tab {
+  border: none;
+  background: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12.5px;
+  color: var(--ink-dim);
+  cursor: pointer;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.filter-tab-active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.filter-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.remaining-count {
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}
+
+.clear-btn {
+  border: none;
+  background: none;
+  font-size: 11.5px;
+  color: var(--brick);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+}
+
+/* list */
+
+.todo-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.todo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.todo-index {
+  font-size: 11px;
+  color: var(--ink-faint);
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.todo-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1.5px solid var(--ink-dim);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.todo-check-done {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 14px;
+  font-family: "Newsreader", Georgia, serif;
+  cursor: text;
+  word-break: break-word;
+}
+
+.todo-edit-input {
+  flex: 1;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  background: transparent;
+  color: var(--ink);
+  outline: none;
+  padding: 0 0 2px;
+}
+
+.todo-row-done .todo-text {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-faint);
+}
+
+.todo-priority {
+  font-size: 10.5px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.todo-delete {
+  border: none;
+  background: none;
+  color: var(--ink-faint);
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.todo-delete:hover {
+  color: var(--brick);
+}
+
+/* empty state */
+
+.empty-state {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.empty-title {
+  font-family: "Newsreader", Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+
+.empty-sub {
+  font-size: 12.5px;
+  color: var(--ink-dim);
+  margin: 0;
+}
